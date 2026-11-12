@@ -1,0 +1,24 @@
+{% extends 'base.html' %}{% load i18n %}
+{% block title %}{{ title }} · CasaConnect{% endblock %}
+{% block content %}
+<div class="thread-head">
+  <a href="{% url 'chat:inbox' %}" class="back">←</a>
+  {% if conv.is_group %}<span class="avatar md group">👥</span>{% else %}{% for o in others %}{% include 'partials/avatar.html' with u=o cls='md' %}{% endfor %}{% endif %}
+  <div class="grow"><h1>{{ title }}</h1>
+    {% if conv.is_group %}<p class="muted small">{% blocktrans with n=conv.members.count %}{{ n }} membres :{% endblocktrans %} {% for m in conv.members.all %}{{ m.get_full_name|default:m.username }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>{% endif %}</div>
+  <form method="post" action="{% url 'chat:star_conversation' conv.pk %}" class="star-form">{% csrf_token %}<input type="hidden" name="next" value="{{ request.get_full_path }}"><button type="submit" class="star {% if membership.is_starred %}on{% endif %}" title="{% trans "Conversation favorite" %}">{% if membership.is_starred %}★{% else %}☆{% endif %}</button></form>
+</div>
+<div class="thread" id="thread">
+{% for m in thread %}
+  <div class="bubble-row {% if m.sender_id == user.pk %}mine{% endif %}">
+    {% if m.sender_id != user.pk %}{% include 'partials/avatar.html' with u=m.sender cls='sm' %}{% endif %}
+    <div class="bubble"><div class="meta">{% if conv.is_group and m.sender_id != user.pk %}<strong>{{ m.sender.get_full_name|default:m.sender.username }}</strong> · {% endif %}{{ m.sent_at|date:"d/m/Y H:i" }}</div>
+      <div class="text" dir="auto">{{ m.body|linebreaksbr }}</div></div>
+    <form method="post" action="{% url 'chat:star_message' m.pk %}" class="star-form">{% csrf_token %}<input type="hidden" name="next" value="{{ request.get_full_path }}"><button type="submit" class="star {% if m.is_starred %}on{% endif %}" aria-label="{% trans "Favori" %}">{% if m.is_starred %}★{% else %}☆{% endif %}</button></form>
+  </div>
+{% endfor %}
+</div>
+{% if scheduled %}<div class="notice">{% trans "⏰ Envois programmés ici :" %}
+  {% for s in scheduled %}<a href="{% url 'chat:scheduled' %}">{{ s.scheduled_for|date:"d/m H:i" }}</a>{% if not forloop.last %}, {% endif %}{% endfor %}</div>{% endif %}
+{% include 'partials/composer.html' with conversation=conv %}
+{% endblock %}

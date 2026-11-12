@@ -1,0 +1,21 @@
+{% extends 'base.html' %}{% load i18n %}
+{% block title %}{% trans "Boîte de réception" %} · CasaConnect{% endblock %}
+{% block content %}
+<div class="page-head"><h1>{% if only_starred %}{% trans "Conversations favorites" %}{% else %}{% trans "Conversations" %}{% endif %}</h1>
+  <div class="tabs"><a href="{% url 'chat:inbox' %}" class="{% if not only_starred %}active{% endif %}">{% trans "Toutes" %}</a>
+  <a href="{% url 'chat:inbox' %}?filter=starred" class="{% if only_starred %}active{% endif %}">{% trans "★ Favoris" %}</a></div></div>
+<div class="list">
+{% for m in rows %}
+  <div class="row {% if m.unread %}unread{% endif %}">
+    <form method="post" action="{% url 'chat:star_conversation' m.conversation.pk %}" class="star-form">{% csrf_token %}<input type="hidden" name="next" value="{{ request.get_full_path }}"><button type="submit" class="star {% if m.is_starred %}on{% endif %}" aria-label="{% trans "Favori" %}">{% if m.is_starred %}★{% else %}☆{% endif %}</button></form>
+    <a class="row-link" href="{% url 'chat:conversation' m.conversation.pk %}">
+      {% if m.other %}{% include 'partials/avatar.html' with u=m.other cls='md' %}{% else %}<span class="avatar md group">👥</span>{% endif %}
+      <div class="row-body"><div class="row-top"><strong>{{ m.title }}</strong><time>{{ m.conversation.last_message_at|date:"d/m H:i" }}</time></div>
+        <div class="row-preview" dir="auto">{{ m.last_sender }} : {{ m.preview|truncatechars:90 }}</div></div>
+      {% if m.unread %}<b class="badge">{{ m.unread }}</b>{% endif %}
+    </a>
+  </div>
+{% empty %}<p class="empty">{% if only_starred %}{% trans "Aucune conversation favorite." %}{% else %}{% trans "Aucune conversation. Cliquez sur « Nouveau message » pour commencer." %}{% endif %}</p>
+{% endfor %}
+</div>
+{% endblock %}

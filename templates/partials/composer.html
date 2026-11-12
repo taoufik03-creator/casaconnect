@@ -1,0 +1,27 @@
+{% load i18n %}<form method="post" class="composer" data-autosave="{% url 'chat:draft_autosave' %}"
+  data-msg-saving="{% trans "Enregistrement…" %}" data-msg-saved="{% trans "Brouillon enregistré à" %}" data-msg-failed="{% trans "Brouillon non enregistré" %}">
+  {% csrf_token %}
+  {{ form.draft_id }}
+  {% if conversation %}<input type="hidden" name="conversation_id" value="{{ conversation.pk }}">{% else %}
+  <div class="field">
+    <label>{% trans "Destinataires" %}</label>
+    <input type="search" dir="auto" class="recipient-filter" placeholder="{% trans "Rechercher un agent (nom ou PBR)…" %}">
+    <div class="recipient-list">
+      {% for cb in form.recipients %}<label class="recipient">{{ cb.tag }}<span>{{ cb.choice_label }}</span></label>{% empty %}<p class="hint">{% trans "Aucun autre agent inscrit pour le moment." %}</p>{% endfor %}
+    </div>
+    <p class="hint"><span class="recipient-count">0</span> {% trans "sélectionné(s)" %} <span class="group-hint" hidden>{% trans "· une conversation de groupe sera créée automatiquement" %}</span></p>
+    {% for e in form.recipients.errors %}<p class="error">{{ e }}</p>{% endfor %}
+  </div>{% endif %}
+  {% for e in form.non_field_errors %}<p class="error">{{ e }}</p>{% endfor %}
+  <div class="field">{{ form.body }}{% for e in form.body.errors %}<p class="error">{{ e }}</p>{% endfor %}</div>
+  <div class="composer-actions">
+    <div class="field inline"><label for="{{ form.scheduled_for.id_for_label }}">{{ form.scheduled_for.label }}</label>{{ form.scheduled_for }}
+      {% for e in form.scheduled_for.errors %}<p class="error">{{ e }}</p>{% endfor %}</div>
+    <div class="btns">
+      <span class="autosave-status" aria-live="polite"></span>
+      <button name="action" value="draft" class="btn ghost" formnovalidate>{% trans "Enregistrer le brouillon" %}</button>
+      <button name="action" value="schedule" class="btn secondary">{% trans "Programmer" %}</button>
+      <button name="action" value="send" class="btn">{% trans "Envoyer" %}</button>
+    </div>
+  </div>
+</form>

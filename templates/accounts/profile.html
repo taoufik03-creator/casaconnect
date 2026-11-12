@@ -1,0 +1,14 @@
+{% extends 'base.html' %}{% load i18n %}
+{% block title %}{% trans "Mon profil" %} · CasaConnect{% endblock %}
+{% block content %}
+<h1>{% trans "Mon profil" %}</h1>
+<div class="card profile-card">
+  <div class="profile-head">{% include 'partials/avatar.html' with u=user cls='lg' %}
+    <div><strong>{{ user.get_full_name }}</strong><br><span class="muted">{% blocktrans with pbr=profile.PBR %}PBR : {{ pbr }}{% endblocktrans %}</span></div></div>
+  <form method="post" enctype="multipart/form-data">{% csrf_token %}
+    {% for e in form.non_field_errors %}<p class="error">{{ e }}</p>{% endfor %}
+    {% for field in form %}{% include 'partials/field.html' %}{% endfor %}
+    <button class="btn">{% trans "Enregistrer" %}</button>
+  </form>
+</div>
+{% endblock %}

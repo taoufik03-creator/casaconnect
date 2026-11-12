@@ -1,0 +1,13 @@
+{% extends 'base.html' %}{% load i18n %}
+{% block title %}{% trans "Brouillons" %} · CasaConnect{% endblock %}
+{% block content %}
+<h1>{% trans "Brouillons" %}</h1><p class="muted">{% trans "Enregistrés automatiquement pendant que vous écrivez." %}</p>
+<div class="list">
+{% for m in items %}
+  <div class="row"><a class="row-link" href="{% url 'chat:draft_open' m.pk %}"><div class="row-body">
+    <div class="row-top"><strong>{% trans "À :" %} {{ m.target }}</strong><time>{{ m.updated_at|date:"d/m H:i" }}</time></div>
+    <div class="row-preview" dir="auto">{% if m.body %}{{ m.body|truncatechars:120 }}{% else %}{% trans "(vide)" %}{% endif %}</div></div></a>
+    <form method="post" action="{% url 'chat:draft_delete' m.pk %}">{% csrf_token %}<button class="link danger">{% trans "Supprimer" %}</button></form></div>
+{% empty %}<p class="empty">{% trans "Aucun brouillon." %}</p>{% endfor %}
+</div>
+{% endblock %}

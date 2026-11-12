@@ -1,0 +1,16 @@
+{% extends 'base.html' %}{% load i18n %}
+{% block title %}{% trans "Favoris" %} · CasaConnect{% endblock %}
+{% block content %}
+<h1>{% trans "Favoris" %}</h1>
+<h2>{% trans "Conversations" %}</h2>
+<div class="list">{% for c in convs_starred %}
+  <div class="row"><a class="row-link" href="{% url 'chat:conversation' c.conversation.pk %}"><div class="row-body"><strong>★ {{ c.title }}</strong></div></a></div>
+{% empty %}<p class="empty">{% trans "Aucune conversation favorite." %}</p>{% endfor %}</div>
+<h2>{% trans "Messages" %}</h2>
+<div class="list">{% for m in messages_starred %}
+  <div class="row"><form method="post" action="{% url 'chat:star_message' m.pk %}" class="star-form">{% csrf_token %}<input type="hidden" name="next" value="{{ request.get_full_path }}"><button type="submit" class="star on">★</button></form>
+    <a class="row-link" href="{% url 'chat:conversation' m.conversation_id %}"><div class="row-body">
+    <div class="row-top"><strong>{{ m.sender.get_full_name|default:m.sender.username }} · {{ m.conv_title }}</strong><time>{{ m.sent_at|date:"d/m/Y H:i" }}</time></div>
+    <div class="row-preview" dir="auto">{{ m.body|truncatechars:140 }}</div></div></a></div>
+{% empty %}<p class="empty">{% trans "Aucun message favori." %}</p>{% endfor %}</div>
+{% endblock %}

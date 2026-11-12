@@ -1,0 +1,7 @@
+{% extends 'base.html' %}{% load i18n %}
+{% block title %}{% trans "Nouveau message" %} · CasaConnect{% endblock %}
+{% block content %}
+<h1>{% trans "Nouveau message" %}</h1>
+<p class="muted">{% trans "Choisissez un ou plusieurs agents. Au-delà d'un destinataire, une conversation de groupe est créée automatiquement." %}</p>
+<div class="card">{% include 'partials/composer.html' %}</div>
+{% endblock %}

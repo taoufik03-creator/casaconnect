@@ -1,0 +1,13 @@
+{% extends 'base.html' %}{% load i18n %}
+{% block title %}{% trans "Connexion" %} · CasaConnect{% endblock %}
+{% block auth %}
+<h1>{% trans "Connexion" %}</h1>
+<form method="post">{% csrf_token %}
+  {% for e in form.non_field_errors %}<p class="error">{{ e }}</p>{% endfor %}
+  {% for field in form %}{% include 'partials/field.html' %}{% endfor %}
+  <input type="hidden" name="next" value="{{ next }}">
+  <button class="btn block">{% trans "Se connecter" %}</button>
+</form>
+<p class="center small"><a href="{% url 'accounts:forgot_password' %}">{% trans "Mot de passe oublié ?" %}</a></p>
+<p class="center small">{% trans "Pas encore de compte ?" %} <a href="{% url 'accounts:signup' %}">{% trans "Créer un compte" %}</a></p>
+{% endblock %}

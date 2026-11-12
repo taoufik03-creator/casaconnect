@@ -1,0 +1,14 @@
+{% extends 'base.html' %}{% load i18n %}
+{% block title %}{% trans "Envois programmés" %} · CasaConnect{% endblock %}
+{% block content %}
+<h1>{% trans "Envois programmés" %}</h1>
+<div class="list">
+{% for m in items %}
+  <div class="row"><div class="row-body">
+    <div class="row-top"><strong>{% trans "À :" %} {{ m.target }}</strong><time>⏰ {{ m.scheduled_for|date:"d/m/Y H:i" }}</time></div>
+    <div class="row-preview" dir="auto">{{ m.body|truncatechars:140 }}</div></div>
+    <form method="post" action="{% url 'chat:unschedule' m.pk %}">{% csrf_token %}<button class="link">{% trans "Modifier / annuler" %}</button></form>
+    <form method="post" action="{% url 'chat:draft_delete' m.pk %}">{% csrf_token %}<input type="hidden" name="next" value="{% url 'chat:scheduled' %}"><button class="link danger">{% trans "Supprimer" %}</button></form></div>
+{% empty %}<p class="empty">{% trans "Aucun envoi programmé." %}</p>{% endfor %}
+</div>
+{% endblock %}

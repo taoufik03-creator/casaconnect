@@ -1,0 +1,374 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: CasaConnect\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 ? 4 : 5);\n"
+
+#: conversation.html
+msgid "%(n)s membres :"
+msgstr "%(n)s أعضاء :"
+
+#: models.py
+msgid "(aucun destinataire)"
+msgstr "(لا يوجد مستلم)"
+
+#: drafts.html
+msgid "(vide)"
+msgstr "(فارغ)"
+
+#: forms.py
+msgid "Action invalide."
+msgstr "إجراء غير صالح."
+
+#: composer.html
+msgid "Aucun autre agent inscrit pour le moment."
+msgstr "لا يوجد موظفون آخرون مسجلون حالياً."
+
+#: drafts.html
+msgid "Aucun brouillon."
+msgstr "لا توجد مسودات."
+
+#: scheduled.html
+msgid "Aucun envoi programmé."
+msgstr "لا توجد رسائل مجدولة."
+
+#: starred.html
+msgid "Aucun message favori."
+msgstr "لا توجد رسائل مفضلة."
+
+#: inbox.html
+msgid "Aucune conversation favorite."
+msgstr "لا توجد محادثات مفضلة."
+
+#: inbox.html
+msgid "Aucune conversation. Cliquez sur « Nouveau message » pour commencer."
+msgstr "لا توجد محادثات. اضغط على «رسالة جديدة» للبدء."
+
+#: base.html
+msgid "Boîte de réception"
+msgstr "صندوق الوارد"
+
+#: models.py
+msgid "Brouillon"
+msgstr "مسودة"
+
+#: composer.html
+msgid "Brouillon enregistré à"
+msgstr "تم حفظ المسودة في"
+
+#: views.py
+msgid "Brouillon enregistré."
+msgstr "تم حفظ المسودة."
+
+#: composer.html
+msgid "Brouillon non enregistré"
+msgstr "لم يتم حفظ المسودة"
+
+#: base.html
+msgid "Brouillons"
+msgstr "المسودات"
+
+#: views.py
+msgid "Ce compte n'a pas de profil agent (PBR)."
+msgstr "هذا الحساب لا يملك ملف موظف (PBR)."
+
+#: views.py
+msgid "Cette étape a expiré. Recommencez la procédure."
+msgstr "انتهت صلاحية هذه الخطوة. أعد الإجراء من البداية."
+
+#: forms.py
+msgid "Choisissez au moins un destinataire."
+msgstr "اختر مستلماً واحداً على الأقل."
+
+#: compose.html
+msgid ""
+"Choisissez un ou plusieurs agents. Au-delà d'un destinataire, une "
+"conversation de groupe est créée automatiquement."
+msgstr ""
+"اختر موظفاً أو أكثر. عند اختيار أكثر من مستلم، يتم إنشاء محادثة جماعية "
+"تلقائياً."
+
+#: forms.py
+msgid "Choisissez une date et une heure d'envoi."
+msgstr "اختر تاريخ ووقت الإرسال."
+
+#: base.html
+msgid "Communication interne · Commune de Casablanca"
+msgstr "التواصل الداخلي · جماعة الدار البيضاء"
+
+#: forms.py
+msgid "Confirmer le mot de passe"
+msgstr "تأكيد كلمة المرور"
+
+#: login.html
+msgid "Connexion"
+msgstr "تسجيل الدخول"
+
+#: conversation.html
+msgid "Conversation favorite"
+msgstr "محادثة مفضلة"
+
+#: inbox.html
+msgid "Conversations"
+msgstr "المحادثات"
+
+#: inbox.html
+msgid "Conversations favorites"
+msgstr "المحادثات المفضلة"
+
+#: signup.html
+msgid "Créer mon compte"
+msgstr "إنشاء حسابي"
+
+#: login.html
+msgid "Créer un compte"
+msgstr "إنشاء حساب"
+
+#: models.py
+msgid "Date de naissance"
+msgstr "تاريخ الميلاد"
+
+#: forms.py
+msgid "Date de naissance invalide."
+msgstr "تاريخ الميلاد غير صالح."
+
+#: composer.html
+msgid "Destinataires"
+msgstr "المستلمون"
+
+#: signup.html
+msgid "Déjà inscrit ?"
+msgstr "هل لديك حساب؟"
+
+#: composer.html
+msgid "Enregistrement…"
+msgstr "جارٍ الحفظ…"
+
+#: profile.html
+msgid "Enregistrer"
+msgstr "حفظ"
+
+#: composer.html
+msgid "Enregistrer le brouillon"
+msgstr "حفظ كمسودة"
+
+#: drafts.html
+msgid "Enregistrés automatiquement pendant que vous écrivez."
+msgstr "تُحفظ تلقائياً أثناء الكتابة."
+
+#: views.py
+msgid "Envoi programmé pour le %(when)s."
+msgstr "تمت جدولة الإرسال بتاريخ %(when)s."
+
+#: base.html
+msgid "Envois programmés"
+msgstr "الرسائل المجدولة"
+
+#: composer.html
+msgid "Envoyer"
+msgstr "إرسال"
+
+#: models.py
+msgid "Envoyé"
+msgstr "مرسلة"
+
+#: inbox.html
+msgid "Favori"
+msgstr "مفضل"
+
+#: starred.html
+msgid "Favoris"
+msgstr "المفضلة"
+
+#: reset_password.html
+msgid ""
+"Identité vérifiée. Choisissez un nouveau mot de passe (cette étape reste "
+"valable 15 minutes)."
+msgstr ""
+"تم التحقق من الهوية. اختر كلمة مرور جديدة (هذه الخطوة صالحة لمدة 15 دقيقة)."
+
+#: forms.py
+msgid "L'image ne doit pas dépasser 2 Mo."
+msgstr "يجب ألا يتجاوز حجم الصورة 2 ميغابايت."
+
+#: forms.py
+msgid "La date d'envoi doit être dans le futur."
+msgstr "يجب أن يكون تاريخ الإرسال في المستقبل."
+
+#: models.py
+msgid "Le PBR doit contenir 3 à 20 lettres/chiffres."
+msgstr "يجب أن يتكون PBR من 3 إلى 20 حرفاً أو رقماً."
+
+#: forms.py
+msgid "Le message est vide."
+msgstr "الرسالة فارغة."
+
+#: forms.py
+msgid "Les deux mots de passe ne correspondent pas."
+msgstr "كلمتا المرور غير متطابقتين."
+
+#: views.py
+msgid "Les informations saisies ne correspondent à aucun compte."
+msgstr "المعلومات المدخلة لا تطابق أي حساب."
+
+#: views.py
+msgid ""
+"Message envoyé : une conversation de groupe a été créée automatiquement."
+msgstr "تم إرسال الرسالة: أُنشئت محادثة جماعية تلقائياً."
+
+#: starred.html
+msgid "Messages"
+msgstr "الرسائل"
+
+#: scheduled.html
+msgid "Modifier / annuler"
+msgstr "تعديل / إلغاء"
+
+#: profile.html
+msgid "Mon profil"
+msgstr "ملفي الشخصي"
+
+#: forms.py
+msgid "Mot de passe"
+msgstr "كلمة المرور"
+
+#: views.py
+msgid "Mot de passe modifié. Vous pouvez vous connecter."
+msgstr "تم تغيير كلمة المرور. يمكنك الآن تسجيل الدخول."
+
+#: forgot_password.html
+msgid "Mot de passe oublié"
+msgstr "نسيت كلمة المرور"
+
+#: login.html
+msgid "Mot de passe oublié ?"
+msgstr "هل نسيت كلمة المرور؟"
+
+#: forms.py
+msgid "Nom"
+msgstr "الاسم العائلي"
+
+#: base.html
+msgid "Nouveau message"
+msgstr "رسالة جديدة"
+
+#: reset_password.html
+msgid "Nouveau mot de passe"
+msgstr "كلمة مرور جديدة"
+
+#: profile.html
+msgid "PBR : %(pbr)s"
+msgstr "PBR : %(pbr)s"
+
+#: login.html
+msgid "Pas encore de compte ?"
+msgstr "ليس لديك حساب بعد؟"
+
+#: models.py
+msgid "Photo de profil"
+msgstr "الصورة الشخصية"
+
+#: forgot_password.html
+msgid ""
+"Pour vérifier votre identité, saisissez votre PBR et votre date de naissance"
+" (les mêmes que lors de l'inscription)."
+msgstr ""
+"للتحقق من هويتك، أدخل رقم PBR وتاريخ ميلادك (نفس المعلومات المستعملة عند "
+"التسجيل)."
+
+#: views.py
+msgid "Profil mis à jour."
+msgstr "تم تحديث الملف الشخصي."
+
+#: composer.html
+msgid "Programmer"
+msgstr "جدولة"
+
+#: forms.py
+msgid "Programmer l'envoi"
+msgstr "جدولة الإرسال"
+
+#: models.py
+msgid "Programmé"
+msgstr "مجدولة"
+
+#: forms.py
+msgid "Prénom"
+msgstr "الاسم الشخصي"
+
+#: composer.html
+msgid "Rechercher un agent (nom ou PBR)…"
+msgstr "ابحث عن موظف (الاسم أو PBR)…"
+
+#: login.html
+msgid "Se connecter"
+msgstr "تسجيل الدخول"
+
+#: base.html
+msgid "Se déconnecter"
+msgstr "تسجيل الخروج"
+
+#: scheduled.html
+msgid "Supprimer"
+msgstr "حذف"
+
+#: views.py
+msgid "Supprimé."
+msgstr "تم الحذف."
+
+#: inbox.html
+msgid "Toutes"
+msgstr "الكل"
+
+#: views.py
+msgid ""
+"Trop de tentatives. Réessayez dans 15 minutes ou contactez l'administrateur."
+msgstr "محاولات كثيرة. أعد المحاولة بعد 15 دقيقة أو تواصل مع المسؤول."
+
+#: forms.py
+msgid "Un compte existe déjà avec ce PBR."
+msgstr "يوجد حساب بهذا الـ PBR مسبقاً."
+
+#: forgot_password.html
+msgid "Un problème persistant ? Contactez l'administrateur de la plateforme."
+msgstr "هل المشكلة مستمرة؟ تواصل مع مسؤول المنصة."
+
+#: views.py
+msgid "Votre compte a été créé. Bienvenue sur CasaConnect !"
+msgstr "تم إنشاء حسابك. مرحباً بك في CasaConnect!"
+
+#: forms.py
+msgid "Votre message…"
+msgstr "رسالتك…"
+
+#: forgot_password.html
+msgid "Vérifier mon identité"
+msgstr "التحقق من هويتي"
+
+#: composer.html
+msgid "sélectionné(s)"
+msgstr "محدد"
+
+#: composer.html
+msgid "· une conversation de groupe sera créée automatiquement"
+msgstr "· سيتم إنشاء محادثة جماعية تلقائياً"
+
+#: scheduled.html
+msgid "À :"
+msgstr "إلى :"
+
+#: forgot_password.html
+msgid "← Retour à la connexion"
+msgstr "→ العودة إلى تسجيل الدخول"
+
+#: conversation.html
+msgid "⏰ Envois programmés ici :"
+msgstr "⏰ رسائل مجدولة هنا :"
+
+#: base.html
+msgid "★ Favoris"
+msgstr "★ المفضلة"

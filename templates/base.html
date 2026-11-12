@@ -1,0 +1,44 @@
+{% load static i18n %}{% get_current_language as LANGUAGE_CODE %}{% get_current_language_bidi as LANGUAGE_BIDI %}<!doctype html>
+<html lang="{{ LANGUAGE_CODE }}" dir="{% if LANGUAGE_BIDI %}rtl{% else %}ltr{% endif %}">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}CasaConnect{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'css/app.css' %}">
+</head>
+<body>
+{% if user.is_authenticated %}
+<div class="shell">
+  <aside class="sidebar">
+    <div class="brand">Casa<span>Connect</span></div>
+    <a class="btn block" href="{% url 'chat:compose' %}">✎ {% trans "Nouveau message" %}</a>
+    <nav>
+      <a href="{% url 'chat:inbox' %}" class="{% if request.resolver_match.url_name == 'inbox' and not request.GET.filter %}active{% endif %}">{% trans "Boîte de réception" %} {% if unread_total %}<b class="badge">{{ unread_total }}</b>{% endif %}</a>
+      <a href="{% url 'chat:starred' %}" class="{% if request.resolver_match.url_name == 'starred' %}active{% endif %}">{% trans "★ Favoris" %}</a>
+      <a href="{% url 'chat:drafts' %}" class="{% if request.resolver_match.url_name == 'drafts' %}active{% endif %}">{% trans "Brouillons" %} {% if draft_count %}<b class="badge gray">{{ draft_count }}</b>{% endif %}</a>
+      <a href="{% url 'chat:scheduled' %}" class="{% if request.resolver_match.url_name == 'scheduled' %}active{% endif %}">{% trans "Envois programmés" %} {% if scheduled_count %}<b class="badge gray">{{ scheduled_count }}</b>{% endif %}</a>
+    </nav>
+    <div class="me">
+      {% include 'partials/lang_switch.html' %}
+      <a href="{% url 'accounts:profile' %}" class="me-link">{% include 'partials/avatar.html' with u=user cls='sm' %}<span>{{ user.get_full_name|default:user.username }}</span></a>
+      <form method="post" action="{% url 'accounts:logout' %}">{% csrf_token %}<button class="link">{% trans "Se déconnecter" %}</button></form>
+    </div>
+  </aside>
+  <main class="main">
+    {% for m in messages %}<div class="flash {{ m.tags }}">{{ m }}</div>{% endfor %}
+    {% block content %}{% endblock %}
+  </main>
+</div>
+{% else %}
+<main class="auth-wrap">
+  <div class="auth-card">
+    <div class="brand center">Casa<span>Connect</span></div>
+    <p class="muted center">{% trans "Communication interne · Commune de Casablanca" %}</p>
+    {% include 'partials/lang_switch.html' %}
+    {% for m in messages %}<div class="flash {{ m.tags }}">{{ m }}</div>{% endfor %}
+    {% block auth %}{% endblock %}
+  </div>
+</main>
+{% endif %}
+<script src="{% static 'js/app.js' %}" defer></script>
+</body>
+</html>
