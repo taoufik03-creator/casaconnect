@@ -41,7 +41,7 @@ def check_birth_date(value):
 
 
 class PBRAuthenticationForm(AuthenticationForm):
-    username = forms.CharField(label="PPR", widget=forms.TextInput(attrs={"autofocus": True}))
+    username = forms.CharField(label="PBR", widget=forms.TextInput(attrs={"autofocus": True}))
 
     def clean_username(self):
         return normalize_pbr(self.cleaned_data["username"])
